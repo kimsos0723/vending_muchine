@@ -82,8 +82,8 @@ void MainWindow::on_pb_mocha_clicked()
 void MainWindow::on_pb_change_clicked()
 {
     QMessageBox qbox;
-
     int num[3] = {0,};
+
     while(this->money) {
         if(int(this->money)-100 >= 0) {
             num[0]++;
@@ -94,8 +94,8 @@ void MainWindow::on_pb_change_clicked()
         } else {
             num[2]++;
             this->money -= 10;
-        }
-    }
+        }        
+    }    
     QString s;
     for(int i=0;i<3;i++){
         if(num[i]) {
@@ -105,9 +105,9 @@ void MainWindow::on_pb_change_clicked()
         }
     }
     qbox.setText(s);
-    this->ui->lcdNumber->display(int(this->money));
-    disable_botton(this->money-120, this->ui->pb_mocha, 160);
-    disable_botton(this->money-120, this->ui->pb_gt, 150);
-    disable_botton(this->money-120, this->ui->pb_coffee, 120);
     qbox.exec();
+    disable_botton(this->money, this->ui->pb_mocha, 160);
+    disable_botton(this->money, this->ui->pb_gt, 150);
+    disable_botton(this->money, this->ui->pb_coffee, 120);
+    this->ui->lcdNumber->display(int(this->money));
 }
